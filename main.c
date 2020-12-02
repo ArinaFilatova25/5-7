@@ -16,12 +16,15 @@ int main()
     return 0;
 
 }
-int equal (int n, int s)
+int equal(int n, int s)
 {
-    if ((n==0 && !s==0) || (s==0 && !n==0) || (n<0 && s>=0) || (s<0 && n>=0)) return 0;
+    if ((n == 0) || (s == 0))
+    {
+        if (n == s)
+            return 1;
 
-    if (n==s) return 1;
-    else s-=n%10;
-    n/=10;
-    return equal(n,s);
+        return 0;
+    }
+
+    return equal(n / 10, s - n % 10);
 }
